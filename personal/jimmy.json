@@ -3,7 +3,11 @@
 	"productName": "JamAgents",
 	"projectsRoot": "/Users/jimmyjam/Desktop/Desktop - Jimmy’s MacBook Air/Projects",
 	"projects": [
-		{ "name": "JamAgents", "dir": "JamAgents", "color": "#eab308" },
+		{
+			"name": "JamAgents",
+			"dir": "/Users/jimmyjam/JamAgents",
+			"color": "#eab308"
+		},
 		{
 			"name": "EOM Minute Reconciliation",
 			"dir": "EOM-Minute-Reconciliation",

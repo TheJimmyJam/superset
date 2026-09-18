@@ -10,6 +10,8 @@ Jimmy's personal build of [Superset](https://github.com/superset-sh/superset). E
 
 ## First run on the Mac
 
+The repo must live at a path with no spaces (`~/JamAgents`); node-gyp cannot build the native modules under `Desktop - Jimmy’s MacBook Air`. `Clone JamAgents.command` in Projects clones or moves it there.
+
 1. Double-click `Setup JamAgents.command` (installs Bun if needed, checks Docker, runs Superset's local dev setup). Docker Desktop must be running.
 2. Double-click `Start JamAgents.command`. It starts the dev app and, once the host service is up, applies `jimmy.json`.
 3. In the app, click **Sign in as dev**.
@@ -18,7 +20,7 @@ Both files are safe to run again.
 
 ## `jimmy.json`
 
-- `projects` - repos under `projectsRoot` to register, with sidebar colors. Missing repos are skipped with a note.
+- `projects` - repos to register (`dir` is relative to `projectsRoot`, or absolute), with sidebar colors. Missing repos are skipped with a note.
 - `agents.keep` - agent presets to show, in order. Other built-ins are removed from the list (restore any of them under Settings > Agents). Custom agents are never touched.
 - `theme` - active theme id (`superset settings theme list` shows the options).
 
