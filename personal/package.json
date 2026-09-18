@@ -1,0 +1,27 @@
+{
+	"name": "@superset/personal",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"description": "Jimmy's personal defaults for the JamAgents fork (projects, agents, theme)",
+	"scripts": {
+		"apply": "bun src/apply.ts",
+		"typecheck": "tsc --noEmit",
+		"test": "bun test"
+	},
+	"dependencies": {
+		"@superset/cli": "workspace:*",
+		"@superset/host-service": "workspace:*",
+		"@superset/shared": "workspace:*",
+		"@trpc/client": "11.16.0",
+		"superjson": "2.2.6"
+	},
+	"devDependencies": {
+		"@superset/typescript": "workspace:*",
+		"@trpc/server": "11.16.0",
+		"bun-types": "1.3.14",
+		"drizzle-orm": "0.45.2",
+		"typescript": "6.0.3",
+		"zod": "4.4.3"
+	}
+}
