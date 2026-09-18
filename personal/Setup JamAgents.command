@@ -11,17 +11,27 @@ echo "== JamAgents setup =="
 echo "Repo: $(pwd)"
 echo
 
-# Bun (pinned in .bun-version)
+# The native-module build (node-gyp) cannot handle spaces in the repo path.
+case "$(pwd)" in
+  *" "*)
+    echo "This repo is at a path with a space in it:"
+    echo "  $(pwd)"
+    echo "The native build fails there. Move the folder to \$HOME/JamAgents (double-click 'Clone JamAgents.command' in Projects does this) and re-run."
+    read -r -p "Press Enter to close"; exit 1 ;;
+esac
+
+# Bun, pinned to .bun-version. Newer Bun skips an optional Postgres driver the
+# migrations rely on, so the exact version matters.
 export PATH="$HOME/.bun/bin:$PATH"
-if ! command -v bun >/dev/null 2>&1; then
-  echo "Installing Bun..."
-  curl -fsSL https://bun.sh/install | bash || { echo "Bun install failed"; read -r -p "Press Enter to close"; exit 1; }
+WANT="$(cat .bun-version 2>/dev/null || echo 1.3.14)"
+if ! command -v bun >/dev/null 2>&1 || [ "$(bun --version)" != "$WANT" ]; then
+  echo "Installing Bun $WANT..."
+  curl -fsSL https://bun.sh/install | bash -s "bun-v$WANT" || { echo "Bun install failed"; read -r -p "Press Enter to close"; exit 1; }
   export PATH="$HOME/.bun/bin:$PATH"
 fi
-WANT="$(cat .bun-version 2>/dev/null || echo 1.3.14)"
 if [ "$(bun --version)" != "$WANT" ]; then
-  echo "Pinning Bun to $WANT..."
-  bun upgrade --version "$WANT" >/dev/null 2>&1 || true
+  echo "Bun is $(bun --version), wanted $WANT. Check that ~/.bun/bin/bun is first on your PATH."
+  read -r -p "Press Enter to close"; exit 1
 fi
 echo "Bun $(bun --version)"
 
@@ -50,8 +60,8 @@ fi
 
 echo
 echo "Running Superset's local dev setup (this takes a few minutes the first time)..."
-./.superset/setup.local.sh
-STATUS=$?
+./.superset/setup.local.sh 2>&1 | tee personal/setup.log
+STATUS=${PIPESTATUS[0]}
 echo
 if [ $STATUS -eq 0 ]; then
   echo "Setup finished. Next: double-click 'Start JamAgents.command'."
