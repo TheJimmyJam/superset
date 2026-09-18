@@ -63,6 +63,7 @@
 	"type": "module",
 	"workspaces": [
 		"packages/*",
+		"personal",
 		"apps/*",
 		"tooling/*"
 	],

@@ -1,0 +1,40 @@
+{
+	"$comment": "Personal defaults for Jimmy's JamAgents fork. Applied by `bun personal/src/apply.ts` against the running local host service. Edit freely; the script is idempotent.",
+	"productName": "JamAgents",
+	"projectsRoot": "/Users/jimmyjam/Desktop/Desktop - Jimmy’s MacBook Air/Projects",
+	"projects": [
+		{ "name": "JamAgents", "dir": "JamAgents", "color": "#eab308" },
+		{
+			"name": "EOM Minute Reconciliation",
+			"dir": "EOM-Minute-Reconciliation",
+			"color": "#ef4444"
+		},
+		{
+			"name": "Aronoff Dashboard",
+			"dir": "aronoff-dashboard",
+			"color": "#ef4444"
+		},
+		{ "name": "Apiary", "dir": "Apiary", "color": "#f59e0b" },
+		{
+			"name": "Cannon Code Connect",
+			"dir": "CCC - Cannon Code Connect",
+			"color": "#0ea5e9"
+		},
+		{ "name": "Gridlock", "dir": "Gridlock", "color": "#8b5cf6" },
+		{ "name": "Nine Week Cut", "dir": "Nine Week Cut", "color": "#22c55e" },
+		{ "name": "Tamsin", "dir": "tamsin", "color": "#ec4899" },
+		{ "name": "Letter Rivals", "dir": "Letter Rivals", "color": "#14b8a6" },
+		{ "name": "Mosscrest Media", "dir": "Mosscrest Media", "color": "#a3e635" },
+		{
+			"name": "NFL Survivor Pool",
+			"dir": "NFL Survivor Pool",
+			"color": "#3b82f6"
+		},
+		{ "name": "Trev's Tiki Bar", "dir": "trevs-tiki-bar", "color": "#f97316" }
+	],
+	"agents": {
+		"$comment": "Preset ids to keep, in sidebar order. Every other built-in preset is removed from the agent list (Settings > Agents can restore any of them). Custom agents are never touched.",
+		"keep": ["claude", "codex", "gemini"]
+	},
+	"theme": "dark"
+}
