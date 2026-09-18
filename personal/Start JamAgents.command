@@ -13,9 +13,9 @@ if [ ! -f .env ]; then
 fi
 
 # Apply personal defaults once the host service is up (it writes a manifest
-# under ~/.superset-*/host/). Retries quietly in the background for ~3 minutes.
+# under ~/.superset-*/host/). Retries quietly in the background for ~10 minutes (first boot compiles everything).
 (
-  for _ in $(seq 1 36); do
+  for _ in $(seq 1 120); do
     sleep 5
     if bun personal/src/apply.ts --dry-run >/dev/null 2>&1; then
       echo

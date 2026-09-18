@@ -165,7 +165,7 @@ function SignInPage() {
 
 					<div className="text-center mb-8">
 						<h1 className="text-xl font-semibold text-foreground mb-2">
-							<Trans>Welcome to Superset</Trans>
+							Welcome to JamAgents
 						</h1>
 						<p className="text-sm text-muted-foreground">
 							{hasLocalToken ? (
